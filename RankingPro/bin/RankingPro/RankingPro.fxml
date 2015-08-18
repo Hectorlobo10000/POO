@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="359.0" prefWidth="522.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="RankingPro.RankingProController">
+   <children>
+      <BorderPane prefHeight="359.0" prefWidth="522.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <MenuBar BorderPane.alignment="CENTER">
+              <menus>
+                <Menu mnemonicParsing="false" text="Archivos">
+                  <items>
+                    <MenuItem fx:id="mnuTorneo" mnemonicParsing="false" text="Nuevo Torneo" />
+                        <MenuItem fx:id="mnuRanking" mnemonicParsing="false" onAction="#abrirRanking" text="Ranking" />
+                        <MenuItem fx:id="mnuConfiguraciones" mnemonicParsing="false" text="Configuraciones" />
+                        <MenuItem fx:id="mnuSalir" mnemonicParsing="false" text="Salir" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Ayuda">
+                  <items>
+                    <MenuItem mnemonicParsing="false" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>
