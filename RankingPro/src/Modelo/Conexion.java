@@ -95,7 +95,7 @@ public class Conexion {
 					+ "A.edad, "
 					+ "A.email, "
 					+ "A.telefono, "
-					+ "A.posicion, "
+					+ "A.id, "
 					+ "A.previamente, "
 					+ "A.puntos, "
 					+ "A.foto "
@@ -105,7 +105,8 @@ public class Conexion {
 					+ "INNER JOIN tbl_origen C "
 					+ "ON (A.id_origen = C.id_origen) "
 					+ "INNER JOIN tbl_carrera D "
-					+ "ON (A.id_carrera = D.id_carrera)");
+					+ "ON (A.id_carrera = D.id_carrera) "
+					+ "ORDER BY A.puntos DESC");
 			while(resultado.next()){
 				Ranking ranking = new Ranking(
 				resultado.getString("cuenta"),
@@ -119,7 +120,7 @@ public class Conexion {
 				resultado.getInt("edad"),
 				resultado.getString("email"),
 				resultado.getString("telefono"),
-				resultado.getInt("posicion"),
+				resultado.getRow()/*resultado.getInt("posicion")*/,
 				resultado.getInt("previamente"),
 				resultado.getInt("puntos"),
 				resultado.getString("foto"));

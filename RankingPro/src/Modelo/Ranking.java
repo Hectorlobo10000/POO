@@ -1,5 +1,8 @@
 package Modelo;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -178,5 +181,44 @@ public class Ranking {
 		return cuenta.get();
 	}
 
+	public int guardarRegistro(Conexion conexion) {
+		try {
+			PreparedStatement ps = conexion.getConexion().prepareStatement("INSERT INTO `db_ranking`.`tbl_ranking` "
+					+ "(`cuenta`, "
+					+ "`primer_nombre`, "
+					+ "`segundo_nombre`, "
+					+ "`primer_apellido`, "
+					+ "`segundo_apellido`, "
+					+ "`id_sexo`, "
+					+ "`id_origen`, "
+					+ "`id_carrera`, "
+					+ "`edad`, "
+					+ "`email`, "
+					+ "`telefono`, "
+					+ "`id`, "
+					+ "`previamente`, "
+					+ "`puntos`, "
+					+ "`foto`) "
+					+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, ?, ?, ?)");
+			ps.setString(1, cuenta.get());
+			ps.setString(2, primerNombre.get());
+			ps.setString(3, segundoNombre.get());
+			ps.setString(4, primerApellido.get());
+			ps.setString(5, segundoApellido.get());
+			ps.setInt(6, sexo.getIdSexo());
+			ps.setInt(7, origen.getIdOrigen());
+			ps.setInt(8, carrera.getIdCarrera());
+			ps.setInt(9, edad.get());
+			ps.setString(10, email.get());
+			ps.setString(11, telefono.get());
+			ps.setInt(12, previamente.get());
+			ps.setInt(13, puntos.get());
+			ps.setString(14, foto.get());
+			return ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
 
 }

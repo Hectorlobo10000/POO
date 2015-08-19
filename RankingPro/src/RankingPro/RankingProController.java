@@ -13,6 +13,8 @@ public class RankingProController  implements Initializable{
 	@FXML private MenuItem mnuRanking;
 	@FXML private MenuItem mnuConfiguraciones;
 	@FXML private MenuItem mnuSalir;
+	@FXML private MenuItem mnuGestinarAtletas;
+
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -24,10 +26,13 @@ public class RankingProController  implements Initializable{
 		main.mostrarRanking();
 	}
 
+	@FXML public void abrirGestionarAtletas(){
+		main.mostrarGestionarJugadores();
+	}
 
 	//Referencias
 	private Main main;
-	
+
 	public Main getMain() {
 		return main;
 	}

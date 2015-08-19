@@ -15,7 +15,7 @@ import javafx.fxml.FXMLLoader;
 public class Main extends Application {
 	private Stage formularioPrincipal;
 	private Stage formularioRanking;
-	private Stage formularioGestionarJugadores;
+	protected Stage formularioGestionarJugadores;
 
 	private RankingProController rankingProController;
 	private RankingController rankingController;
@@ -92,7 +92,7 @@ public class Main extends Application {
 	}
 
 	public void mostrarGestionarJugadores() {
-		formularioRanking.show();
+		formularioGestionarJugadores.show();
 	}
 
 	public void enlazarRanking(ObservableList<Ranking> olRanking){

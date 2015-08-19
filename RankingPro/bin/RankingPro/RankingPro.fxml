@@ -5,8 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="359.0" prefWidth="522.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="RankingPro.RankingProController">
+<AnchorPane prefHeight="359.0" prefWidth="522.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RankingPro.RankingProController">
    <children>
       <BorderPane prefHeight="359.0" prefWidth="522.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -20,9 +19,9 @@
                         <MenuItem fx:id="mnuSalir" mnemonicParsing="false" text="Salir" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Ayuda">
+                <Menu mnemonicParsing="false" text="Atletas">
                   <items>
-                    <MenuItem mnemonicParsing="false" />
+                    <MenuItem fx:id="mnuGestinarAtletas" mnemonicParsing="false" onAction="#abrirGestionarAtletas" text="Gestionar atletas" />
                   </items>
                 </Menu>
               </menus>

@@ -14,14 +14,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
 public class RankingController implements Initializable{
 
 	@FXML private TableView<Ranking> tblRanking;
@@ -37,9 +35,12 @@ public class RankingController implements Initializable{
 	@FXML private TextField txtSegundoNombre;
 	@FXML private TextField txtPrimerApellido;
 	@FXML private TextField txtSegundoApellido;
-	@FXML private ComboBox<Sexo> cboSexo;
+	@FXML private TextField txtSexo;
+	@FXML private TextField txtOrigen;
+	@FXML private TextField txtCarrera;
+	/*@FXML private ComboBox<Sexo> cboSexo;
 	@FXML private ComboBox<Origen> cboOrigen;
-	@FXML private ComboBox<Carrera> cboCarrera;
+	@FXML private ComboBox<Carrera> cboCarrera;*/
 	@FXML private TextField txtEdad;
 	@FXML private TextField txtCorreo;
 	@FXML private TextField txtTelefono;
@@ -61,9 +62,9 @@ public class RankingController implements Initializable{
 		listaOrigen = FXCollections.observableArrayList();
 		listaCarrera = FXCollections.observableArrayList();
 		llenarListas();
-		cboSexo.setItems(listaSexo);
+		/*cboSexo.setItems(listaSexo);
 		cboCarrera.setItems(listaCarrera);
-		cboOrigen.setItems(listaOrigen);
+		cboOrigen.setItems(listaOrigen);*/
 
 		tblRanking.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Ranking>(){
 			{
@@ -84,9 +85,12 @@ public class RankingController implements Initializable{
 		txtSegundoNombre.setText(newValue.getSegundoNombre());
 		txtPrimerApellido.setText(newValue.getPrimerApellido());
 		txtSegundoApellido.setText(newValue.getSegundoApellido());
-		cboSexo.getSelectionModel().select(newValue.getSexo());
+		txtSexo.setText(newValue.getSexo().toString());
+		txtOrigen.setText(newValue.getOrigen().toString());
+		txtCarrera.setText(newValue.getCarrera().toString());
+		/*cboSexo.getSelectionModel().select(newValue.getSexo());
 		cboOrigen.getSelectionModel().select(newValue.getOrigen());
-		cboCarrera.getSelectionModel().select(newValue.getCarrera());
+		cboCarrera.getSelectionModel().select(newValue.getCarrera());*/
 		txtEdad.setText(String.valueOf(newValue.getEdad()));
 		txtCorreo.setText(newValue.getEmail());
 		txtTelefono.setText(newValue.getTelefono());
