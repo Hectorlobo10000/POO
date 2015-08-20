@@ -102,7 +102,7 @@ public class GestionarJugadoresController implements Initializable{
 		});
 	}
 
-	private String foto = null;
+	private String foto;
 	private void llenarComponentes(Ranking newValue) {
 		foto = newValue.getFoto();
 		Image image = new Image("file:" + newValue.getFoto());
@@ -141,7 +141,7 @@ public class GestionarJugadoresController implements Initializable{
 		clmOrigen.setCellValueFactory(new PropertyValueFactory<Ranking, String>("origen"));
 		clmCarrera.setCellValueFactory(new PropertyValueFactory<Ranking, String>("carrera"));
 		clmEdad.setCellValueFactory(new PropertyValueFactory<Ranking, Number>("edad"));
-		clmCorreo.setCellValueFactory(new PropertyValueFactory<Ranking, String>("correo"));
+		clmCorreo.setCellValueFactory(new PropertyValueFactory<Ranking, String>("email"));
 		clmTelefono.setCellValueFactory(new PropertyValueFactory<Ranking, String>("telefono"));
 		clmPosicion.setCellValueFactory(new PropertyValueFactory<Ranking, Number>("posicion"));
 		clmPreviamente.setCellValueFactory(new PropertyValueFactory<Ranking, Number>("previamente"));
@@ -169,7 +169,7 @@ public class GestionarJugadoresController implements Initializable{
 	@FXML private void salvar(){
 		String insertarFoto = "";
 		if(imgFile == null){
-			insertarFoto = null;
+			insertarFoto = "";
 		}else{
 			insertarFoto = imgFile.getAbsolutePath();
 		}
@@ -215,12 +215,14 @@ public class GestionarJugadoresController implements Initializable{
 				alerta.setContentText("Registro guardado");
 				alerta.initModality(Modality.WINDOW_MODAL);
 				alerta.initOwner(main.formularioGestionarJugadores);
+				alerta.showAndWait();
 			}else{
 				Alert alerta = new Alert(AlertType.ERROR);
 				alerta.setTitle("Sistema de Ranking");
 				alerta.setContentText("No se pudo guardar el registro");
 				alerta.initModality(Modality.WINDOW_MODAL);
 				alerta.initOwner(main.formularioGestionarJugadores);
+				alerta.showAndWait();
 			}
 		}else{
 			Alert alerta = new Alert(AlertType.ERROR);
@@ -228,6 +230,7 @@ public class GestionarJugadoresController implements Initializable{
 			alerta.setContentText(resultados);
 			alerta.initModality(Modality.WINDOW_MODAL);
 			alerta.initOwner(main.formularioGestionarJugadores);
+			alerta.showAndWait();
 		}
 
 	}

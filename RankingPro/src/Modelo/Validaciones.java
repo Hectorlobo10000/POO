@@ -17,27 +17,27 @@ public class Validaciones {
 			String previamente,
 			String puntos) {
 		String resultado = "";
-		if(cuenta == null){
+		if(cuenta == null || cuenta.isEmpty()){
 			resultado = resultado + "El campo CUENTA es obligatorio \n";
 		}
 
-		if(primerNombre == null){
+		if(primerNombre == null || primerNombre.isEmpty()){
 			resultado = resultado + "El campo PRIMER NOMBRE es obligatorio \n";
 		}
 
-		if(SegundoNombre == null){
+		if(SegundoNombre == null || SegundoNombre.isEmpty()){
 			resultado = resultado + "El campo SEGUNDO NOMBRE es obligatorio \n";
 		}
 
-		if(primerApellido == null){
+		if(primerApellido == null || primerApellido.isEmpty()){
 			resultado = resultado + "El campo PRIMER APELLIDO es obligatorio \n";
 		}
 
-		if(segundoApellido == null){
+		if(segundoApellido == null || segundoApellido.isEmpty()){
 			resultado = resultado + "El campo SEGUNDO APELLIDO es obligatorio \n";
 		}
 
-		if(edad == null){
+		if(edad == null || edad.isEmpty()){
 			resultado = resultado + "El campo EDAD es obligatorio \n";
 		}else{
 			try{
@@ -47,7 +47,7 @@ public class Validaciones {
 			}
 		}
 
-		if(correo == null){
+		if(correo == null || correo.isEmpty()){
 			resultado = resultado + "El campo E-MAIL es obligatorio \n";
 		}else
 		{
@@ -58,7 +58,7 @@ public class Validaciones {
 			}
 		}
 
-		if(telefono == null){
+		if(telefono == null || telefono.isEmpty()){
 			resultado = resultado + "El campo TELÉFONO es obligatorio \n";
 		}else{
 			Pattern pattern = Pattern.compile("^\\+?\\d{1,3}?[- .]?\\(?(?:\\d{2,3})\\)?[- .]?\\d\\d\\d[- .]?\\d\\d\\d\\d$");
@@ -68,7 +68,7 @@ public class Validaciones {
 			}
 		}
 
-		if(previamente == null){
+		if(previamente == null || previamente.isEmpty()){
 			resultado = resultado + "El campo PREVIAMENTE es obligatorio \n";
 		}else{
 			try{
@@ -78,7 +78,7 @@ public class Validaciones {
 			}
 		}
 
-		if(puntos == null){
+		if(puntos == null || puntos.isEmpty()){
 			resultado = resultado + "El campo PUNTOS es obligatorio \n";
 		}else{
 			try{
