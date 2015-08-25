@@ -3,6 +3,8 @@ package Modelo;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javafx.collections.ObservableList;
+
 public class Validaciones {
 
 
@@ -15,10 +17,16 @@ public class Validaciones {
 			String correo,
 			String telefono,
 			String previamente,
-			String puntos) {
+			String puntos, ObservableList<Ranking> listaRanking) {
 		String resultado = "";
 		if(cuenta == null || cuenta.isEmpty()){
 			resultado = resultado + "El campo CUENTA es obligatorio \n";
+		}else{
+			for(int validarCuenta = 0; validarCuenta < listaRanking.size(); validarCuenta++){
+				if(cuenta == listaRanking.get(validarCuenta).getCuenta()){
+					resultado = resultado + "El número de CUENTA ingresado ya existe";
+				}
+			}
 		}
 
 		if(primerNombre == null || primerNombre.isEmpty()){
@@ -90,5 +98,4 @@ public class Validaciones {
 
 		return resultado;
 	}
-
 }

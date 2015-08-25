@@ -90,8 +90,8 @@ public class GestionarJugadoresController implements Initializable{
 
 			@Override
 			public void changed(ObservableValue<? extends Ranking> observable, Ranking oldValue, Ranking newValue) {
-				llenarComponentes(newValue);
 				if(newValue != null){
+					llenarComponentes(newValue);
 					imgFoto.setDisable(false);
 					btnActualizar.setDisable(false);
 					btnNuevo.setDisable(false);
@@ -102,7 +102,7 @@ public class GestionarJugadoresController implements Initializable{
 		});
 	}
 
-	private String foto;
+	private String foto = "";
 	private void llenarComponentes(Ranking newValue) {
 		foto = newValue.getFoto();
 		Image image = new Image("file:" + newValue.getFoto());
@@ -169,7 +169,7 @@ public class GestionarJugadoresController implements Initializable{
 	@FXML private void salvar(){
 		String insertarFoto = "";
 		if(imgFile == null){
-			insertarFoto = "";
+			insertarFoto = "nada";
 		}else{
 			insertarFoto = imgFile.getAbsolutePath();
 		}
@@ -183,7 +183,7 @@ public class GestionarJugadoresController implements Initializable{
 				txtCorreo.getText(),
 				txtTelefono.getText(),
 				txtPreviamente.getText(),
-				txtPuntos.getText());
+				txtPuntos.getText(), listaRanking);
 		if(resultados.isEmpty()){
 			Ranking ranking = new Ranking(
 					txtCuenta.getText(),
@@ -282,6 +282,10 @@ public class GestionarJugadoresController implements Initializable{
 		btnNuevo.setDisable(false);
 		imgFoto.setDisable(false);
 		imgFile = null;
+	}
+
+	@FXML private void modificar(){
+
 	}
 
 	//Enlazar lista

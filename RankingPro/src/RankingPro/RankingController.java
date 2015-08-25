@@ -72,7 +72,9 @@ public class RankingController implements Initializable{
 
 			@Override
 			public void changed(ObservableValue<? extends Ranking> observable, Ranking oldValue, Ranking newValue) {
-				llenarComponentes(newValue);
+				if(newValue != null){
+					llenarComponentes(newValue);
+				}
 			}
 		});
 	}
