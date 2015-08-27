@@ -41,9 +41,9 @@ public class Main extends Application {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+		inicializarFormularioTorneo();
 		inicialiazarFormularioRanking();
 		inicialiazarFormularioGestionarJugadores();
-		inicializarFormularioTorneo();
 	}
 
 	public void inicialiazarFormularioGestionarJugadores() {
@@ -127,6 +127,7 @@ public class Main extends Application {
 	public void enlazarRanking(ObservableList<Ranking> olRanking){
 		rankingController.setEnlazarRanking(olRanking);
 		rankingProController.setEnlazarRanking(olRanking);
+		torneoController.setEnlazarRanking(olRanking);
 	}
 
 	public static void main(String[] args) {

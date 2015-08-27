@@ -271,4 +271,18 @@ public class Ranking {
 		}
 	}
 
+	public static int actualizarPuntos(Conexion conexion, String cuenta, int valor) {
+		try {
+			PreparedStatement ps = conexion.getConexion().prepareStatement("UPDATE `db_ranking`.`tbl_ranking` SET "
+					+ "`puntos` = `puntos` + ? "
+					+ "WHERE cuenta = ?");
+			ps.setInt(1, valor);
+			ps.setString(2, cuenta);
+			return ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
+
 }
