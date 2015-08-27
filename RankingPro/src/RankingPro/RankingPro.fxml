@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="359.0" prefWidth="522.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RankingPro.RankingProController">
+<AnchorPane prefHeight="606.0" prefWidth="454.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RankingPro.RankingProController">
    <children>
       <BorderPane prefHeight="359.0" prefWidth="522.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -13,10 +13,9 @@
               <menus>
                 <Menu mnemonicParsing="false" text="Archivos">
                   <items>
-                    <MenuItem fx:id="mnuTorneo" mnemonicParsing="false" text="Nuevo Torneo" />
+                    <MenuItem fx:id="mnuTorneo" mnemonicParsing="false" onAction="#abrirTorneo" text="Nuevo Torneo" />
                         <MenuItem fx:id="mnuRanking" mnemonicParsing="false" onAction="#abrirRanking" text="Ranking" />
-                        <MenuItem fx:id="mnuConfiguraciones" mnemonicParsing="false" text="Configuraciones" />
-                        <MenuItem fx:id="mnuSalir" mnemonicParsing="false" text="Salir" />
+                        <MenuItem fx:id="mnuSalir" mnemonicParsing="false" onAction="#salir" text="Salir" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Atletas">
@@ -27,6 +26,17 @@
               </menus>
             </MenuBar>
          </top>
+         <center>
+            <TableView fx:id="tblRanking" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+              <columns>
+                <TableColumn fx:id="clmPosicion" prefWidth="75.0" text="Posición" />
+                <TableColumn fx:id="clmPreviamente" prefWidth="75.0" text="Previamete" />
+                  <TableColumn fx:id="clmJugador" prefWidth="75.0" text="Jugador" />
+                  <TableColumn fx:id="clmCarrera" prefWidth="75.0" text="Carrera" />
+                  <TableColumn fx:id="clmPuntos" prefWidth="75.0" text="Puntos" />
+              </columns>
+            </TableView>
+         </center>
       </BorderPane>
    </children>
 </AnchorPane>

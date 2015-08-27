@@ -16,10 +16,12 @@ public class Main extends Application {
 	private Stage formularioPrincipal;
 	private Stage formularioRanking;
 	protected Stage formularioGestionarJugadores;
+	private Stage formularioTorneo;
 
 	private RankingProController rankingProController;
 	private RankingController rankingController;
 	private GestionarJugadoresController gestionarJugadoresController;
+	private TorneoController torneoController;
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -41,6 +43,7 @@ public class Main extends Application {
 		}
 		inicialiazarFormularioRanking();
 		inicialiazarFormularioGestionarJugadores();
+		inicializarFormularioTorneo();
 	}
 
 	public void inicialiazarFormularioGestionarJugadores() {
@@ -87,6 +90,28 @@ public class Main extends Application {
 		}
 	}
 
+	public void inicializarFormularioTorneo(){
+		if(formularioTorneo ==  null){
+			try {
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(getClass().getResource("Torneo.fxml"));
+				AnchorPane root = (AnchorPane)loader.load();
+				Scene scene = new Scene(root);
+				formularioTorneo = new Stage();
+				//scene.getStylesheets().add(getClass().getResource("").toExternalForm());
+				formularioTorneo.setScene(scene);
+				formularioTorneo.setTitle("Torneo UNAH");
+				formularioTorneo.setResizable(false);
+				formularioTorneo.initModality(Modality.WINDOW_MODAL);
+				formularioTorneo.initOwner(formularioPrincipal);
+				torneoController = loader.getController();
+				torneoController.setMain(this);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
 	public void mostrarRanking() {
 		formularioRanking.show();
 	}
@@ -95,8 +120,13 @@ public class Main extends Application {
 		formularioGestionarJugadores.show();
 	}
 
+	public void mostrarTorneo(){
+		formularioTorneo.show();
+	}
+
 	public void enlazarRanking(ObservableList<Ranking> olRanking){
 		rankingController.setEnlazarRanking(olRanking);
+		rankingProController.setEnlazarRanking(olRanking);
 	}
 
 	public static void main(String[] args) {

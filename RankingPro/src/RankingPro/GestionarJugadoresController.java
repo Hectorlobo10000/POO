@@ -167,9 +167,9 @@ public class GestionarJugadoresController implements Initializable{
 	}
 
 	@FXML private void salvar(){
-		String insertarFoto = "";
+		insertarFoto = "";
 		if(imgFile == null){
-			insertarFoto = "nada";
+			insertarFoto = "";
 		}else{
 			insertarFoto = imgFile.getAbsolutePath();
 		}
@@ -183,7 +183,7 @@ public class GestionarJugadoresController implements Initializable{
 				txtCorreo.getText(),
 				txtTelefono.getText(),
 				txtPreviamente.getText(),
-				txtPuntos.getText(), listaRanking);
+				txtPuntos.getText(), listaRanking, 1);
 		if(resultados.isEmpty()){
 			Ranking ranking = new Ranking(
 					txtCuenta.getText(),
@@ -200,7 +200,8 @@ public class GestionarJugadoresController implements Initializable{
 					0,
 					Integer.valueOf(txtPreviamente.getText()),
 					Integer.valueOf(txtPuntos.getText()),
-					insertarFoto);
+					insertarFoto,
+					0);
 			conexion.Conectar();
 			int valor = ranking.guardarRegistro(conexion);
 			conexion.Cerrar();
@@ -285,11 +286,79 @@ public class GestionarJugadoresController implements Initializable{
 	}
 
 	@FXML private void modificar(){
+		insertarFoto = "";
+		if(imgFile == null){
+			insertarFoto = foto;
+		}else{
+			insertarFoto = imgFile.getAbsolutePath();
+		}
+		String resultados = Validaciones.getValidar(
+				txtCuenta.getText(),
+				txtPrimerNombre.getText(),
+				txtSegundoNombre.getText(),
+				txtPrimerApellido.getText(),
+				txtSegundoApellido.getText(),
+				txtEdad.getText(),
+				txtCorreo.getText(),
+				txtTelefono.getText(),
+				txtPreviamente.getText(),
+				txtPuntos.getText(), listaRanking, 0);
+		if(resultados.isEmpty()){
+			Ranking ranking = new Ranking(
+					txtCuenta.getText(),
+					txtPrimerNombre.getText(),
+					txtSegundoNombre.getText(),
+					txtPrimerApellido.getText(),
+					txtSegundoApellido.getText(),
+					cboSexo.getSelectionModel().getSelectedItem(),
+					cboOrigen.getSelectionModel().getSelectedItem(),
+					cboCarrera.getSelectionModel().getSelectedItem(),
+					Integer.valueOf(txtEdad.getText()),
+					txtCorreo.getText(),
+					txtTelefono.getText(),
+					0,
+					Integer.valueOf(txtPreviamente.getText()),
+					Integer.valueOf(txtPuntos.getText()),
+					insertarFoto,
+					0);
+			conexion.Conectar();
+			int valor = ranking.modificarRegistro(conexion);
+			conexion.Cerrar();
+			if(valor == 1){
+				listaRanking.clear();
+				conexion.Conectar();
+				conexion.llenarListaRanking(listaRanking);
+				conexion.Cerrar();
+				limpiar();
+				Alert alerta = new Alert(AlertType.CONFIRMATION);
+				alerta.setTitle("Sistema de Ranking");
+				alerta.setContentText("Registro modificado");
+				alerta.initModality(Modality.WINDOW_MODAL);
+				alerta.initOwner(main.formularioGestionarJugadores);
+				alerta.showAndWait();
+			}else{
+				Alert alerta = new Alert(AlertType.ERROR);
+				alerta.setTitle("Sistema de Ranking");
+				alerta.setContentText("No se pudo modificar el registro");
+				alerta.initModality(Modality.WINDOW_MODAL);
+				alerta.initOwner(main.formularioGestionarJugadores);
+				alerta.showAndWait();
+			}
+		}else{
+			Alert alerta = new Alert(AlertType.ERROR);
+			alerta.setTitle("Sistema de Ranking");
+			alerta.setContentText(resultados);
+			alerta.initModality(Modality.WINDOW_MODAL);
+			alerta.initOwner(main.formularioGestionarJugadores);
+			alerta.showAndWait();
+		}
 
 	}
 
+
 	//Enlazar lista
 	private Main main;
+	private String insertarFoto;
 
 	public Main getMain() {
 		return main;

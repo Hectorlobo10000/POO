@@ -112,7 +112,7 @@ public class RankingController implements Initializable{
 		clmPreviamente.setCellValueFactory(new PropertyValueFactory<Ranking, Number>("previamente"));
 		clmJugador.setCellValueFactory(new PropertyValueFactory<Ranking, String>("jugador"));
 		clmCarrera.setCellValueFactory(new PropertyValueFactory<Ranking, String>("carrera"));
-		clmPuntos.setCellValueFactory(new PropertyValueFactory<Ranking, Number>("Puntos"));
+		clmPuntos.setCellValueFactory(new PropertyValueFactory<Ranking, Number>("puntos"));
 	}
 
 	//Enlazar listaRanking

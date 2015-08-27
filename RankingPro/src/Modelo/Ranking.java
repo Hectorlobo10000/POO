@@ -25,11 +25,12 @@ public class Ranking {
 	private IntegerProperty puntos;
 	private StringProperty foto;
 	private StringProperty jugador;
+	private IntegerProperty id;
 
 	public Ranking(String cuenta, String primerNombre, String segundoNombre,
 			String primerApellido, String segundoApellido, Sexo sexo, Origen origen, Carrera carrera,
 			int edad, String email, String telefono, int posicion,
-			int previamente, int puntos, String foto) {
+			int previamente, int puntos, String foto, int id) {
 		this.cuenta = new SimpleStringProperty(cuenta);
 		this.primerNombre = new SimpleStringProperty(primerNombre);
 		this.segundoNombre = new SimpleStringProperty(segundoNombre);
@@ -46,6 +47,15 @@ public class Ranking {
 		this.puntos = new SimpleIntegerProperty(puntos);
 		this.foto = new SimpleStringProperty(foto);
 		this.jugador = new SimpleStringProperty(primerApellido + " " + primerNombre);
+		this.id = new SimpleIntegerProperty(id);
+	}
+
+	public int getId(){
+		return id.get();
+	}
+
+	public void setId(int id){
+		this.id = new SimpleIntegerProperty(id);
 	}
 
 	public String getCuenta() {
@@ -214,6 +224,46 @@ public class Ranking {
 			ps.setInt(12, previamente.get());
 			ps.setInt(13, puntos.get());
 			ps.setString(14, foto.get());
+			return ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
+
+	public int modificarRegistro(Conexion conexion) {
+		try {
+			PreparedStatement ps = conexion.getConexion().prepareStatement("UPDATE `db_ranking`.`tbl_ranking` SET "
+					+ "`cuenta` = ?, "
+					+ "`primer_nombre` = ?, "
+					+ "`segundo_nombre` = ?, "
+					+ "`primer_apellido` = ?, "
+					+ "`segundo_apellido` = ?, "
+					+ "`id_sexo` = ?, "
+					+ "`id_origen` = ?, "
+					+ "`id_carrera` = ?, "
+					+ "`edad` = ?, "
+					+ "`email` = ?, "
+					+ "`telefono` = ?, "
+					+ "`previamente` = ?, "
+					+ "`puntos` = ?, "
+					+ "`foto` = ? "
+					+ "WHERE cuenta = ?");
+			ps.setString(1, cuenta.get());
+			ps.setString(2, primerNombre.get());
+			ps.setString(3, segundoNombre.get());
+			ps.setString(4, primerApellido.get());
+			ps.setString(5, segundoApellido.get());
+			ps.setInt(6, sexo.getIdSexo());
+			ps.setInt(7, origen.getIdOrigen());
+			ps.setInt(8, carrera.getIdCarrera());
+			ps.setInt(9, edad.get());
+			ps.setString(10, email.get());
+			ps.setString(11, telefono.get());
+			ps.setInt(12, previamente.get());
+			ps.setInt(13, puntos.get());
+			ps.setString(14, foto.get());
+			ps.setString(15, cuenta.get());
 			return ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

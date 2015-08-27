@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="581.0" prefWidth="992.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RankingPro.GestionarJugadoresController">
    <children>
       <SplitPane dividerPositions="0.6717171717171717" layoutX="-22.0" prefHeight="529.0" prefWidth="992.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -97,7 +96,7 @@
                         <HBox layoutX="133.0" layoutY="546.0" prefHeight="25.0" spacing="5.0">
                            <children>
                               <Button fx:id="btnSalvar" disable="true" mnemonicParsing="false" onAction="#salvar" text="Salvar" />
-                              <Button fx:id="btnActualizar" disable="true" mnemonicParsing="false" text="Actualizar" />
+                              <Button fx:id="btnActualizar" disable="true" mnemonicParsing="false" onAction="#modificar" text="Actualizar" />
                               <Button fx:id="btnNuevo" mnemonicParsing="false" onAction="#nuevo" text="Nuevo" />
                            </children>
                         </HBox>

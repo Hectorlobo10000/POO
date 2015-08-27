@@ -123,7 +123,8 @@ public class Conexion {
 				resultado.getRow()/*resultado.getInt("posicion")*/,
 				resultado.getInt("previamente"),
 				resultado.getInt("puntos"),
-				resultado.getString("foto"));
+				resultado.getString("foto"),
+				resultado.getInt("id"));
 				listaRanking.add(ranking);
 			}
 		} catch (SQLException e) {
